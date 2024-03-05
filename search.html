@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search News</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <header>
+        <h1>Search for News</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form id="search-form">
+            <input type="text" id="city-input" placeholder="Enter city name">
+            <button type="submit">Search</button>
+        </form>
+        <div id="loading-message" style="display:none;">Loading...</div>
+        <div id="error-message" style="display:none;">Error fetching data</div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Local News Buzz. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
