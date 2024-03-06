@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Georgia, serif;
+  color: red;
+}
+
+.navbar {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+.navbar .Logo {
+  font-size: 24px;
+  margin-right: auto;
+}
+.navbar nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.navbar nav ul li {
+  margin-right: 20px;
+}
+.navbar nav ul li a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+.navbar nav ul li a:hover {
+  color: yellow;
+}/*# sourceMappingURL=main.css.map */

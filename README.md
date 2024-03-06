@@ -14,3 +14,8 @@
 
 # Solution
 - I solved the first blocker by realizing there were a typo error in my code.
+
+### Day 2: API Integration and Class Implementation
+
+# Blockers
+- None
