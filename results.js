@@ -22,13 +22,21 @@ class NewsFetcher {
   static displayNews(newsData) {
     const newsResultsContainer = document.getElementById("news-results");
     newsResultsContainer.innerHTML = "";
-
+ console.log(newsData);
     newsData.forEach((news) => {
       const newsElement = document.createElement("div");
-      newsElement.textContent = news.title;
+      newsElement.innerHTML = `
+      <div class="card">
+      <h2>${news.title}</h2>
+      <p>${news.description}</p>
+      <div><img src= "${news.image}" alt= "${news.title}"  /></div>
+      <p>Check it out<a href="${news.url}">here</a></p>
+      </div>
+      `;
       newsResultsContainer.appendChild(newsElement);
     });
   }
+ 
 }
 
 document.addEventListener("DOMContentLoaded", function () {

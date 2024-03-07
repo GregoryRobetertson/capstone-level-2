@@ -1,0 +1,22 @@
+.card {
+  background-color: white;
+  width: 500px;
+  div {
+    height: 500px;
+    width: 500px;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  transform: scale (0.2);
+}
+
+#news-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
