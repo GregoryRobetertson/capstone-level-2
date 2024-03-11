@@ -13,7 +13,7 @@
 - city news wouldn't display.
 
 # Solution
-- I solved the first blocker by realizing there were a typo error in my code.
+- I solved the first blocker by realizing I had a typo in my code.
 
 ### Day 2: API Integration and Class Implementation
 
