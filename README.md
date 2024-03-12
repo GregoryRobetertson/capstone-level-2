@@ -20,7 +20,6 @@
 # Blockers
 - None
 ### Understanding 
-
 # .then
 The .then() method is a fundamental part of working with Promises in JavaScript. Promises are objects that represent the eventual completion (or failure) of an asynchronous operation, and .then() is used to handle the result of that operation.
 
@@ -36,5 +35,5 @@ If the Promise is rejected (i.e., the asynchronous operation fails), and a secon
 
 Importantly, .then() itself returns a Promise, which allows for chaining multiple .then() calls together. Each .then() call can transform the value or handle errors as needed.
 
-# window.location.href: Gets or sets the entire URL.
-# window.location.search: Gets or sets the query string portion of the URL (starts with "?" if present).
+ window.location.href: Gets or sets the entire URL.
+ window.location.search: Gets or sets the query string portion of the URL (starts with "?" if present).
