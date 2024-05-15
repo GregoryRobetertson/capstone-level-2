@@ -1,13 +1,16 @@
 "use strict";
 
-let newUrl = "https://gnews.io/api/v4";
-
 class NewsFetcher {
-  constructor(pageUrl, city = 'no city' ) {
+  constructor(pageUrl, city = 'no city', lang = 'en') {
     this.city = city;
+    this.lang = lang; // Default language is English
     this.apiKey = "f99a5be2836b4f2556a9210782282c81";
-
-    this.newsApiUrl = `${newUrl}${pageUrl}&apikey=${this.apiKey}`;
+    // Conditionally construct the API URL based on whether a city is provided or not
+    if (this.city === 'no city') {
+      this.newsApiUrl = `https://gnews.io/api/v4${pageUrl}&lang=${this.lang}&apikey=${this.apiKey}`;
+    } else {
+      this.newsApiUrl = `https://gnews.io/api/v4/search?q=${this.city}&lang=${this.lang}&apikey=${this.apiKey}`;
+    }
   }
 
   fetchNews() {
@@ -32,7 +35,7 @@ class NewsFetcher {
       <div class="card">
       <h2>${news.title}</h2>
       <p>${news.description}</p>
-      <div><img src= "${news.image}" alt= "${news.title}"  /></div>
+      <div><img src="${news.image}" alt="${news.title}" /></div>
       <p>Check it out <a href="${news.url}">here</a></p>
       </div> 
       `;
@@ -44,11 +47,10 @@ class NewsFetcher {
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const city = urlParams.get("city");
-  const resultsUrl = `/search?q=${city}`;
   const homeUrl = `/top-headlines?category=general`;
-  if (city) {
 
-    const newsFetcher = new NewsFetcher(resultsUrl, city);
+  if (city) {
+    const newsFetcher = new NewsFetcher(`/search?q=${city}`, city);
     newsFetcher
       .fetchNews()
       .then((newsData) => {
@@ -67,11 +69,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(() => {
         displayErrorMessage();
       });
-
   }
 });
 
 function displayErrorMessage() {
   document.getElementById("error-message").style.display = "block";
 }
-
