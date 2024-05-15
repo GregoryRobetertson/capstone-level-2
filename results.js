@@ -1,6 +1,6 @@
 "use strict";
 
-let newUrl = "https://gnews.io/api/v4";
+let newUrl = "https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=us&max=10&apikey";
 
 class NewsFetcher {
   constructor(pageUrl, city = 'no city' ) {
