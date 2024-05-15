@@ -2,7 +2,7 @@ class NewsFetcher {
   constructor(pageUrl, city = 'no city', lang = 'en') {
     this.city = city;
     this.lang = lang;
-    this.apiKey = "f99a5be2836b4f2556a9210782282c81";
+    this.apiKey = "c4e2ee1eec3ca87b26ef45ad4d95ac26";
     if (this.city === 'no city') {
       this.newsApiUrl = `https://gnews.io/api/v4${pageUrl}&lang=${this.lang}&apikey=${this.apiKey}`;
     } else {
