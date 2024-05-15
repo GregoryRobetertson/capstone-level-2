@@ -1,21 +1,24 @@
-"use strict";
-
 class NewsFetcher {
   constructor(pageUrl, city = 'no city', lang = 'en') {
     this.city = city;
-    this.lang = lang; // Default language is English
+    this.lang = lang;
     this.apiKey = "f99a5be2836b4f2556a9210782282c81";
-    // Conditionally construct the API URL based on whether a city is provided or not
     if (this.city === 'no city') {
       this.newsApiUrl = `https://gnews.io/api/v4${pageUrl}&lang=${this.lang}&apikey=${this.apiKey}`;
     } else {
-      this.newsApiUrl = `https://gnews.io/api/v4/search?q=${this.city}&lang=${this.lang}&apikey=${this.apiKey}`;
+      // Encode city name to handle special characters
+      this.newsApiUrl = `https://gnews.io/api/v4/search?q=${encodeURIComponent(this.city)}&lang=${this.lang}&apikey=${this.apiKey}`;
     }
   }
 
   fetchNews() {
     return fetch(this.newsApiUrl)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch news. Status: ' + response.status);
+        }
+        return response.json();
+      })
       .then((newsData) => {
         return newsData.articles;
       })
@@ -28,16 +31,16 @@ class NewsFetcher {
   static displayNews(newsData) {
     const newsResultsContainer = document.getElementById("news-results");
     newsResultsContainer.innerHTML = "";
-    console.log(newsData);
     newsData.forEach((news) => {
       const newsElement = document.createElement("div");
+      // Sanitize HTML content
       newsElement.innerHTML = `
-      <div class="card">
-      <h2>${news.title}</h2>
-      <p>${news.description}</p>
-      <div><img src="${news.image}" alt="${news.title}" /></div>
-      <p>Check it out <a href="${news.url}">here</a></p>
-      </div> 
+        <div class="card">
+          <h2>${sanitizeHTML(news.title)}</h2>
+          <p>${sanitizeHTML(news.description)}</p>
+          <div><img src="${sanitizeHTML(news.image)}" alt="${sanitizeHTML(news.title)}" /></div>
+          <p>Check it out <a href="${sanitizeHTML(news.url)}">here</a></p>
+        </div> 
       `;
       newsResultsContainer.appendChild(newsElement);
     });
@@ -74,4 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function displayErrorMessage() {
   document.getElementById("error-message").style.display = "block";
+}
+
+// Function to sanitize HTML content
+function sanitizeHTML(str) {
+  const temp = document.createElement('div');
+  temp.textContent = str;
+  return temp.innerHTML;
 }
