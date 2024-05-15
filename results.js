@@ -5,7 +5,7 @@ let newUrl = "https://gnews.io/api/v4";
 class NewsFetcher {
   constructor(pageUrl, city = 'no city' ) {
     this.city = city;
-    this.apiKey = "5caaa963ed1c66ea2e3098fb55b2f36e";
+    this.apiKey = "f99a5be2836b4f2556a9210782282c81";
 
     this.newsApiUrl = `${newUrl}${pageUrl}&apikey=${this.apiKey}`;
   }
