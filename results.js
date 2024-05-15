@@ -1,7 +1,5 @@
 "use strict";
 
-let newUrl = "https://gnews.io/api/v4";
-
 class NewsFetcher {
   constructor(pageUrl, city = 'no city', lang = 'en') {
     this.city = city;
